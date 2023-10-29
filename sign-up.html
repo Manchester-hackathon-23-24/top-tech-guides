@@ -6,6 +6,17 @@
     <title>Accidentally erased your Android phone? Here's how to get your data back in just 3 easy steps
     </title>
     <link href="article.css" rel="stylesheet">
+    <script>
+        function sign_up() {
+            document.getElementById("signup").showModal();
+        }
+
+        function main() {
+            setInterval(()=> { 
+                document.getElementById("timeout").showModal()
+            }, 7000)
+        }
+    </script>
 </head>
 <body onload="main()">
 
@@ -105,6 +116,18 @@
             <button onclick="sign_up()">Sign up now</button>
         </label>
     </form>
+    <dialog id="signup">
+        <h2>Signup unsuccessful</h2>
+        <p>This is just a frontend site - there is no actual way to sign up. Sorry.</p>
+        <form method="dialog">
+            <button>OK</button>
+          </form>
+    </dialog>
+    <dialog id="timeout">
+        <h2>Timeout</h2>
+        <p>Your session has timed out. The form will now automatically be cleared.</p>
+        <button onclick="window.location.reload()">OK</button>
+    </dialog>
     </main>
 
 </body>

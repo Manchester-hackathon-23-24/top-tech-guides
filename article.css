@@ -116,3 +116,23 @@ input[type=text], input[type=email] {
 form button {
     width: 30ch;
 }
+
+dialog {
+    background-color: lightgray;
+    text-align: center;
+    border: none;
+    border-radius: 48px;
+    box-shadow: grey 30px 30px 10px;
+}
+
+dialog button {
+    background-color: #2196f3;
+    border: none;
+    padding: 12px;
+    transition: 0.25s background-color ease;
+    opacity: 100%;
+}
+
+dialog button:hover {
+    background-color: white;
+}
