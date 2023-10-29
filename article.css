@@ -1,0 +1,118 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital@0;1&display=swap');
+
+body {
+    margin: 0px;
+}
+
+* {
+    font-family: 'Open Sans', sans-serif;
+    
+}
+
+p, li, button, input, label {
+    font-size: 21px;
+}
+
+h2, h3 {
+    font-size: 36px;
+}
+
+h1 {
+    font-size: 48px;;
+}
+
+main {
+    width: 100ch;
+    margin: auto;
+    margin-top: 128px;
+}
+
+#signup {
+    width: 100ch;
+    height: 500px;
+    text-align: center;
+    background-color: lightgray;
+    padding: 24px;
+    margin: auto;
+    margin-bottom: 0px;
+    transform: translateY(-410px);
+}
+
+nav {
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+    background-color: #2196f3;
+}
+
+nav>button {
+    width: 20%;
+    text-align: center;
+    padding: 24px;
+    background-color: #2196f3;
+    border: none;
+    transition: 0.25s background-color ease;
+}
+
+nav>button>ul {
+    display: none;
+    list-style: none;
+    padding: 0px;
+    text-align: center;
+    z-index: 1;
+    padding-top: 48px;
+    padding-bottom: 48px;
+    border-bottom-right-radius: 24px;
+    border-bottom-left-radius: 24px;
+}
+
+nav>button>ul>li {
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+nav>button>ul a {
+    color: black;
+}
+
+nav>button:focus+button {
+    background-color: white;
+}
+
+nav>button:focus+button>ul, nav>button>ul:focus-within, nav>button>ul:hover {
+    display: block;
+    position: fixed;
+    width: calc(20% - 24px);
+    transform: translateX(-20px);
+    background-color: lightgrey;
+}
+
+#page-title {
+    display: block;
+    font-size: 48px;
+    font-family: "Oswald", sans-serif;
+    background-color: red;
+    width: 100%;
+    text-align: center;
+    padding: 24px;
+}
+
+main img {
+    width: 100%;
+}
+
+form label {
+    display: grid;
+    grid-template-columns: 40ch min-content 20ch;
+    gap: 24px;
+    margin-bottom: 24px;
+}
+
+input[type=text], input[type=email] {
+    font-size: 24px;
+}
+
+form button {
+    width: 30ch;
+}

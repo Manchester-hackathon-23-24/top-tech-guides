@@ -1,0 +1,128 @@
+@keyframes hiding {
+    0% {
+        opacity: 100%;
+        transform: translate(0, 0);
+    }
+
+    100% {
+        opacity: 0%;
+        transform: translate(0, -100px)
+    }
+}
+
+@keyframes appearing {
+    0% {
+        opacity: 0%;
+        transform: translate(0, 100px)
+    }
+
+    100% {
+        opacity: 100%;
+        transform: translate(0, 0);
+    }
+}
+
+
+body {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: black;
+    color: white;
+    height: 100vh;
+    font-size: 40px;
+    font-family: monospace;
+}
+
+a {
+    color: #2196f3;
+}
+
+input[type=checkbox] {
+    height: 40px;
+    width: 40px;
+}
+
+
+#cookie-policy {
+    display: none
+}
+
+#cookie-policy:target {
+    display: block;
+    position: fixed;
+    margin: auto;
+    background-color: white;
+    color: black;
+    padding: 24px;
+}
+
+#cookie-policy a {
+    display: block;
+    text-align: center;;
+}
+
+.appearing-section {
+    animation: appearing 0.25s ease-in 0s 1;
+}
+
+.hiding-section {
+    animation: hiding 0.25s ease-in 0s 1;
+}
+
+.question {
+    display: none;
+
+    text-align: center;
+}
+
+.question button {
+    background-color: black;;
+    color: white;
+    box-shadow: none;
+    border: 2px solid white;
+    width: 10ch;
+    padding: 12px 32px 12px 32px;
+    font-family: inherit;
+    font-size: inherit;
+    margin-top: 32px;;
+}
+
+.question button:hover {
+    background-color: white;
+    color: black;
+}
+
+.question:nth-child(1) {
+    display: block;
+}
+
+#failed:not(:target) {
+    display: none;
+}
+
+#failed {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: red;
+    color: black;
+    text-align: center;
+}
+
+#access-link {
+    display: block;
+    position: absolute;
+    top: -100%;
+}
+
+#access-link:focus {
+    top: 0px;
+    left: 0px;
+    background-color: white;
+    color: black;
+}

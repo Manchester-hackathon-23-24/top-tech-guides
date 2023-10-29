@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accidentally erased your Android phone? Here's how to get your data back in just 3 easy steps
+    </title>
+    <link rel="stylesheet" href="main.css">
+    <script>
+        function current_question_is(id) {
+            return (document.querySelector(".question:nth-child("+current_question.toString()+"):is(#" + id + ")") != null)
+        }
+
+        function next_question() {
+            document.querySelector(".question:nth-child("+current_question.toString()+")").classList.add("hiding-section");
+            setTimeout(() => {
+                document.querySelector(".question:nth-child("+current_question.toString()+")").style.display = "none";
+                document.querySelector(".question:nth-child("+(current_question+1).toString()+")").style.display = "block";
+                document.querySelector(".question:nth-child("+(current_question+1).toString()+")").classList.add("appearing-section");
+                current_question = current_question+1
+
+                if (current_question_is("press-a-key")) {
+                    document.onkeypress = (event) => {
+                        if (event.keyCode == 97) {
+                            next_question();
+                            document.onkeypress = {}
+                        } else {
+                            fail("That was not the expected key, so you have been denied access to the website. Please reload to try again.")
+                            document.onkeypress = {}
+                        }
+
+                    }
+
+                }
+
+                if (current_question_is("tab-link")) {
+                    document.getElementById("access-link").focus();
+                }
+
+            },
+            250);
+
+           
+
+        }
+
+        function fail(message="You have been denied access to the website because you did not accept  the cookie policy. Please reload to try again.") {
+
+            document.getElementById("questions-area").remove();
+            document.getElementById("cookie-policy").remove();
+            window.location.hash = "#failed"
+            document.getElementById("failed").innerText = message;
+            addEventListener("hashchange", (event) => {
+                if (window.location.hash != "#failed") {
+                    window.location.hash = "#failed"
+                    document.getElementById("failed").innerText = "The back button doesn't help you here either.";
+                }
+            });
+
+        }
+
+
+        function main() {
+            if (window.location.hash == "#failed") {
+                fail("We lied, sorry. Reloading doesn't work.");
+            } else {
+                current_question = 1;
+            
+                for (let i = 0; i < 8; i++) {
+                   document.getElementById("questions-area").insertBefore(document.getElementById("10-times-question").cloneNode(true), document.getElementById("10-times-question-swapped"));
+                }
+            }
+        
+        }
+    </script>
+</head>
+<body onload="main()">
+    <a href="main.html" id="access-link">Skip cookie policy confusion</a>
+    <div id="questions-area">
+    <section class="question">
+        <p id="cookie-question">
+            I agree to the <a href="#cookie-policy">cookie policy</a>.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()"">No</button>
+        </p>
+    </section>
+    <section class="question">
+        <p id="cookie-question">
+            I'm sure I agree to the <a href="#cookie-policy">cookie policy</a>.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question">
+        <p id="cookie-question">
+            I'm sure I'm sure I agree to the <a href="#cookie-policy">cookie policy</a>.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question">
+        <p id="cookie-question">
+            I'm absolutely, positively certain I agree to the <a href="#cookie-policy">cookie policy</a>.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question">
+        <p id="cookie-question">
+            For real this time. I agree to the <a href="#cookie-policy">cookie policy</a>. Heck, the <a href="#cookie-policy">cookie policy</a> is my life. I live and breathe the <a href="#cookie-policy">cookie policy</a>.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question">
+        <p id="cookie-question">
+        Listen here. I don't care about cookies. Just let me view the damn site.<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question" id="10-times-question">
+        <p id="cookie-question">
+        Well, OK, but you have to click "yes" 10 more times<br>
+            <button onclick="next_question()">Yes</button>
+            <button onclick="fail()">No</button>
+        </p>
+    </section>
+    <section class="question" id="10-times-question-swapped">
+        <p id="cookie-question">
+        Well, OK, but you have to click "yes" 10 more times<br>
+            <button onclick="fail()">No</button>
+            <button onclick="next_question()">Yes</button>
+        </p>
+    </section>
+    <section class="question" id="press-a-key">
+      Press a key to continue
+    </section>
+    <section class="question" id="tab-link">
+        By the way, we still care about accessibility, even when the aim is to create confusion.<br>
+        Look at the top of the page. That was here all along. All you had to do was press <em>Tab</em>.
+      </section>
+</div>
+
+
+
+    <section id="cookie-policy">
+        This website doesn't use cookies, so there is no cookie policy.
+        <br>
+        <a href="#">OK</a>
+    </section>
+
+    <div id="failed">
+        a
+    </div>
+</body>
+</html>             
